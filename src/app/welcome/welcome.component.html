@@ -1,0 +1,17 @@
+<h1>Welcome!</h1>
+
+<div class="container">
+  {{name}} You can mananger your todo here <a routerLink="/todos">here</a>
+</div>
+
+<div class="container">
+  <button (click)="getWelcomeMessageWithParameter()" class="button btn-success"> Welcome</button>
+ 
+
+</div>
+
+<div class="container" *ngIf="welcomeMessage">
+  
+  <h2>  {{welcomeMessage}}</h2>
+  
+  </div>

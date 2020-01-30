@@ -1,0 +1,39 @@
+<div class="container">
+
+  <form (ngSubmit)="saveUser()" #todoForm="ngForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" required />
+      <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touch||message )"> cannot be blank
+      </div>
+    </div >
+
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" #username ="ngModel" name="userName" [(ngModel)]="user.username" required />
+      <div class="alert alert-danger"  *ngIf="username.invalid && (username.dirty || username.touch||message  )&& !result"> cannot be blank</div>
+      <div class="alert alert-danger" *ngIf="result">{{result.error}}</div>
+    </div >
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" #password="ngModel" class="form-control" name="password" [(ngModel)]="user.password" required   />
+       <div *ngIf="password.invalid && (todoForm.submitted || password.touched)" class="alert alert-danger">
+   <div *ngIf="password.errors.required"> Password is required. </div>
+ </div>
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control" name="confirmPassword" #confirmpassword="ngModel" [(ngModel)]="confirmPassword" required  pattern="{{ password.value }}" />
+      <div *ngIf=" confirmpassword.invalid && (todoForm.submitted || confirmpassword.touched)" class="alert alert-danger">
+          <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
+          <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+  </form>
+
+</div>
