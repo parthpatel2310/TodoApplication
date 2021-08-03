@@ -30,9 +30,10 @@ export class BasicAuthenticationService {
   }
 
   createUser(user: User) {
+    console.log(user)
     return this.http.post<any>(`${API_URL}/users/createusers`, user).pipe(map(
       data => {
-        sessionStorage.setItem(AUTHENTICATED_USER, user.username)
+        sessionStorage.setItem(AUTHENTICATED_USER, user.userName)
         sessionStorage.setItem(TOKEN, "Bearer " + data.token);
         return data
       }
@@ -82,6 +83,11 @@ export class BasicAuthenticationService {
   logout() {
     sessionStorage.removeItem(AUTHENTICATED_USER)
     sessionStorage.removeItem(TOKEN)
+  }
+
+  getAllUserData()
+  {
+      return this.http.get<User[]>(`${API_URL}/users/getuserdetails`)
   }
 
 }

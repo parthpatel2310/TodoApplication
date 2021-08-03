@@ -14,6 +14,11 @@
       <input type="date" class="form-control" min="today" name="targetDate" [(ngModel)]="todo.targetDate" required>
     </fieldset>
 
+    <fieldset class="form-group" *ngIf="todo.id >0">
+      <label>Status</label>
+      <input type="checkbox" class="form-control" name="status" [(ngModel)]="todo.status">
+    </fieldset>
+
 
     <button type="submit" class="btn btn-success" *ngIf="todo.id >0">Update</button>
     <button type="submit" class="btn btn-success" *ngIf="!todo.id">Save</button>

@@ -30,6 +30,7 @@ export class HardCodedAuthenticationService {
   logout()
   {
     sessionStorage.removeItem("authenticatedUser")
+    
   }
 
 }

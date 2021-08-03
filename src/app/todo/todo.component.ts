@@ -36,6 +36,7 @@ export class TodoComponent implements OnInit {
   }
 
   saveTodo() {
+    console.log(this.todo)
 
     if(this.todo.description == " " || this.todo.description.length == 0 )
     {

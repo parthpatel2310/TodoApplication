@@ -9,7 +9,7 @@ import { BasicAuthenticationService } from '../service/basic-authentication.serv
 
 export class Todo
 {
-  constructor(public id:number,public userId:number,public description:string,public done:boolean,public targetDate : String)
+  constructor(public id:number,public userId:number,public description:string,public status:boolean,public targetDate : String)
   {
     
   }

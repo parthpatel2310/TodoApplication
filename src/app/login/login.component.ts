@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       data =>
       {
         this.basicAuthenticationService.setAuthenticatedUserId(this.username)
-        this.router.navigate(["welcome",this.username])
+       // this.router.navigate(["welcome",this.username])
+        window.location.replace("http://localhost:4200/welcome/"+this.username);
       },
       error=>
       {

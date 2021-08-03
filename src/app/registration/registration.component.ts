@@ -5,12 +5,10 @@ import { BasicAuthenticationService } from '../service/basic-authentication.serv
 
 
 export class User {
-  constructor(public id: number, public name: string, public password: string, public username: string,public accountNonExpired,public accountNonLocked,public authorities,public credentialsNonExpired,public enable) {
+  constructor(public id: number, public name: string, public password: string, public userName: string, public userTypeId : number, public accountNonExpired, public accountNonLocked, public authorities,public credentialsNonExpired,public enable) {
 
   }
 }
-
-
 
 @Component({
   selector: 'app-registration',
@@ -35,25 +33,27 @@ export class RegistrationComponent implements OnInit {
 
     if (sessionStorage.getItem("authenticatedUser")) {
       this.router.navigate(["welcome", sessionStorage.getItem("authenticatedUser")])
-      this.user = new User(0,"","","",true,true,null,true,true)
+      this.user = new User(0,"","","",2,true,true,null,true,true)
     }
     else{
-      this.user = new User(0,"","","",true,true,null,true,true)
+      this.user = new User(0,"","","",2,true,true,null,true,true)
     }
   }
 
   saveUser() {
-    if (this.user.name == " " || this.user.username == "" || this.user.password == "" || this.confirmPassword == "") {
+    console.log("save user", this.user);
+
+    if (this.user.name == " " || this.user.userName == "" || this.user.password == "" || this.confirmPassword == "") {
       this.message = "Cannot be null"
 
     }
     else {
         this.userService.createUser(this.user).subscribe(response => {
-           this.userService.setAuthenticatedUserId(this.user.username)
-            this.router.navigate(["welcome",this.user.username])
+           this.userService.setAuthenticatedUserId(this.user.userName)
+            this.router.navigate(["welcome",this.user.name])
         },
           error => {
-            this.user.username=""
+            this.user = null
             this.result = error
             
             console.log(this.result)

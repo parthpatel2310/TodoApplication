@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
 import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter-basic-auth.service';
 import { RegistrationComponent } from './registration/registration.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { RegistrationComponent } from './registration/registration.component';
     FooterComponent,
     LogoutComponent,
     TodoComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

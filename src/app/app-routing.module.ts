@@ -7,6 +7,7 @@ import { ListToDoComponent } from './list-to-do/list-to-do.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { TodoComponent } from './todo/todo.component';
+import { UserListComponent } from './user-list/user-list.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'todo/:id',component:TodoComponent,canActivate:[RouteGuardService]},
   {path:'todo',component:TodoComponent,canActivate:[RouteGuardService]},
   {path:'registration',component:RegistrationComponent},
+  {path:'userList',component:UserListComponent},
   {path:'**',component:ErrorComponent}
 ];
 
